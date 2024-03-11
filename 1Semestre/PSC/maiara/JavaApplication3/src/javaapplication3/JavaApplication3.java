@@ -12,6 +12,13 @@ public class JavaApplication3 {
         System.out.println("conversor de decimal para binario");
         System.out.println("digite '1'para metodo1  ou digite '2'para o metodo2");
         
+        System.out.println("metodo 1: estruturas de repeticao.");
+        System.out.println("metodo 2: funcao java.");
+        
+        //444 = 001111011 com inversor
+        //444 = 110111100 sem inversor
+        //444 = 110111100 funcao java
+        
         float selecao = n.nextFloat();
        
         if (selecao == 1){
@@ -54,13 +61,15 @@ public class JavaApplication3 {
          // System.out.println(binario);
         }
         //
-      String binarioAoContrario =" ";
-      for (int i =(binario.length()); i != 0; i--){
-      binarioAoContrario+= "" + binario.charAt( i-1);
-      }
+        
+        
+      //String binarioAoContrario =" ";
+      //for (int i =(binario.length()); i != 0; i--){
+      //binarioAoContrario+= "" + binario.charAt( i-1);
+      // }
         
         System.out.println("O resultado em binario é:");
-        System.out.println(binarioAoContrario);
+        System.out.println(binario);
         
     }
 
