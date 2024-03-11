@@ -1,0 +1,85 @@
+section .data
+    buffer resb 32      ; Buffer para armazenar o resultado binário
+    nl     db 0xA      ; Caractere de nova linha
+
+section .text
+    global _start
+
+_start:
+    ; Leia a entrada decimal
+    mov eax, 0          ; Limpe EAX para armazenar a entrada
+    mov ebx, 10         ; Base 10 (decimal)
+    mov ecx, buffer     ; Endereço do buffer para o resultado
+    call read_decimal
+
+    ; Converta decimal para binário
+    mov eax, [buffer]   ; Carregue o número decimal
+    mov ecx, buffer + 31 ; Ponto final do buffer binário
+
+convert_loop:
+    test eax, eax       ; Verifique se o número é zero
+    jz   print_result   ; Se for zero, saia do loop
+
+    ; Divida por 2 e armazene o resto no buffer
+    mov edx, 0          ; Limpe EDX para a divisão
+    div ebx             ; EAX = EAX / 2, EDX = EAX % 2
+    add dl, '0'         ; Converta o resto para caractere
+    dec ecx             ; Mova para o próximo caractere no buffer
+    mov [ecx], dl       ; Armazene o caractere no buffer
+    jmp convert_loop    ; Continue o loop
+
+print_result:
+    ; Escreva o resultado binário
+    mov eax, 4          ; Número do sistema de chamadas para sys_write
+    mov ebx, 1          ; Descritor de arquivo padrão (stdout)
+    mov edx, 32         ; Comprimento do buffer binário
+    lea ecx, [buffer]   ; Endereço do buffer binário
+    int 0x80            ; Chame a interrupção do sistema
+
+    ; Saia do programa
+    mov eax, 1          ; Número do sistema de chamadas para sys_exit
+    xor ebx, ebx        ; Código de saída zero
+    int 0x80            ; Chame a interrupção do sistema
+
+section .text
+    read_decimal:
+        ; Esta função lê um número decimal da entrada padrão e o armazena no buffer.
+        ; Entradas:
+        ;   - EAX: registrador para armazenar a entrada decimal
+        ;   - EBX: base para a conversão (neste caso, 10 para decimal)
+        ;   - ECX: endereço do buffer para armazenar o resultado
+        ; Saídas:
+        ;   - O número decimal é armazenado em EAX
+        ;   - O buffer contém o número convertido em formato ASCII
+
+        pushad              ; Salve os registradores gerais
+
+        xor eax, eax        ; Limpe EAX para armazenar a entrada
+        xor ecx, ecx        ; Limpe ECX para armazenar o buffer
+
+    read_loop:
+        mov eax, 3          ; Número do sistema de chamadas para sys_read
+        mov ebx, 0          ; Descritor de arquivo padrão (stdin)
+        lea edx, [nl]       ; Endereço do caractere de nova linha
+        lea ecx, [buffer]   ; Endereço do buffer de entrada
+        int 0x80            ; Chame a interrupção do sistema
+
+        ; Verifique se atingimos a nova linha
+        cmp byte [buffer], 0xA
+        je  end_read
+
+        ; Converta o caractere ASCII para inteiro e adicione ao número
+        sub byte [buffer], '0'
+        imul eax, ebx        ; Multiplicar o número atual por 10
+        add eax, [buffer]   ; Adicionar o novo dígito
+
+        ; Mova para o próximo caractere no buffer
+        mov ebx, 10
+        imul eax, ebx
+
+        ; Continue o loop de leitura
+        jmp read_loop
+
+    end_read:
+        popad               ; Restaure os registradores gerais
+        ret
