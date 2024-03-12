@@ -15,7 +15,7 @@ public class Main {
         int b = ler.nextInt();
         
         System.out.println(
-                "RESULTADOS"+
+        "RESULTADOS"+
         "\nA soma de: "+ a +" + "+ b+" = "+(a+b) +
         "\nA subtracao de:" + a +" - "+ b+" = "+(a-b)+
         "\nA multiplicacao de:" + a +" x "+ b+" = "+(a*b)+
