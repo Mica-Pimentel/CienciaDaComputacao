@@ -27,10 +27,20 @@ public class Aprovacao {
         
         float media =(nota1+nota2+nota3+nota4)/4;
         
-    
+        
+        //estrurura de decisao 
+        if(media>=7 && faltas<5){
+            System.out.println("O aluno: " + nome + " esta aprovado\n sua media e: "+media);
+        }else if(media<=6.9 && faltas>=5){
+            System.out.println("O aluno: " + nome + " esta reprovado por media baixa\n sua media e: "+media);
+        }else if(media>=7 && faltas>=5){
+            System.out.println("O aluno: " + nome + " esta reprovado por falta\n sua media e: "+media);
+        }else{
+        System.out.println("O aluno: " + nome + " esta reprovado por falta e media baixa\n sua media e: "+media);
+        }
         
         
-        
+      
     }
     
     
