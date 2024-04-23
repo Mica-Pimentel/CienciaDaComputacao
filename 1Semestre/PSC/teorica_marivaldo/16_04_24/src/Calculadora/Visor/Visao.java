@@ -28,6 +28,7 @@ public class Visao extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
         tfValor = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
@@ -36,22 +37,25 @@ public class Visao extends javax.swing.JFrame {
         NegativoPositivo = new javax.swing.JButton();
         Percent = new javax.swing.JButton();
         Divisao = new javax.swing.JButton();
+        Cl = new javax.swing.JButton();
         Sete = new javax.swing.JButton();
         Oito = new javax.swing.JButton();
         Nove = new javax.swing.JButton();
         Multiplicacao = new javax.swing.JButton();
+        subtracao = new javax.swing.JButton();
         Quatro = new javax.swing.JButton();
         Cinco = new javax.swing.JButton();
         Seis = new javax.swing.JButton();
-        subtracao = new javax.swing.JButton();
+        adicao = new javax.swing.JButton();
+        Virgula = new javax.swing.JButton();
         Um = new javax.swing.JButton();
         Dois = new javax.swing.JButton();
         Tres = new javax.swing.JButton();
-        adicao = new javax.swing.JButton();
-        Virgula = new javax.swing.JButton();
         Zero = new javax.swing.JButton();
-        Sair = new javax.swing.JButton();
         Igual = new javax.swing.JButton();
+        Sair = new javax.swing.JButton();
+
+        jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CALCSHOW");
@@ -77,6 +81,11 @@ public class Visao extends javax.swing.JFrame {
         panel1.add(NegativoPositivo);
 
         Percent.setText("%");
+        Percent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PercentActionPerformed(evt);
+            }
+        });
         panel1.add(Percent);
 
         Divisao.setText("/");
@@ -86,6 +95,14 @@ public class Visao extends javax.swing.JFrame {
             }
         });
         panel1.add(Divisao);
+
+        Cl.setText("Cl");
+        Cl.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ClActionPerformed(evt);
+            }
+        });
+        panel1.add(Cl);
 
         Sete.setText("7");
         Sete.addActionListener(new java.awt.event.ActionListener() {
@@ -119,6 +136,14 @@ public class Visao extends javax.swing.JFrame {
         });
         panel1.add(Multiplicacao);
 
+        subtracao.setText("-");
+        subtracao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                subtracaoActionPerformed(evt);
+            }
+        });
+        panel1.add(subtracao);
+
         Quatro.setText("4");
         Quatro.setToolTipText("");
         Quatro.addActionListener(new java.awt.event.ActionListener() {
@@ -144,13 +169,21 @@ public class Visao extends javax.swing.JFrame {
         });
         panel1.add(Seis);
 
-        subtracao.setText("-");
-        subtracao.addActionListener(new java.awt.event.ActionListener() {
+        adicao.setText("+");
+        adicao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                subtracaoActionPerformed(evt);
+                adicaoActionPerformed(evt);
             }
         });
-        panel1.add(subtracao);
+        panel1.add(adicao);
+
+        Virgula.setText(",");
+        Virgula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VirgulaActionPerformed(evt);
+            }
+        });
+        panel1.add(Virgula);
 
         Um.setText("1");
         Um.addActionListener(new java.awt.event.ActionListener() {
@@ -176,22 +209,6 @@ public class Visao extends javax.swing.JFrame {
         });
         panel1.add(Tres);
 
-        adicao.setText("+");
-        adicao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                adicaoActionPerformed(evt);
-            }
-        });
-        panel1.add(adicao);
-
-        Virgula.setText(",");
-        Virgula.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                VirgulaActionPerformed(evt);
-            }
-        });
-        panel1.add(Virgula);
-
         Zero.setText("0");
         Zero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -199,14 +216,6 @@ public class Visao extends javax.swing.JFrame {
             }
         });
         panel1.add(Zero);
-
-        Sair.setText("Sair");
-        Sair.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SairActionPerformed(evt);
-            }
-        });
-        panel1.add(Sair);
 
         Igual.setText("=");
         Igual.addActionListener(new java.awt.event.ActionListener() {
@@ -216,28 +225,32 @@ public class Visao extends javax.swing.JFrame {
         });
         panel1.add(Igual);
 
+        Sair.setText("Sair");
+        Sair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SairActionPerformed(evt);
+            }
+        });
+        panel1.add(Sair);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(tfValor)
+                    .addComponent(panel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(110, 110, 110)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(50, 50, 50))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfValor)
-                            .addComponent(panel1, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE))
-                        .addGap(25, 25, 25))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(124, 124, 124))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -245,12 +258,15 @@ public class Visao extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(tfValor, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(140, 140, 140))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 140, Short.MAX_VALUE)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(316, 316, 316))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         pack();
@@ -269,7 +285,7 @@ public class Visao extends javax.swing.JFrame {
     }//GEN-LAST:event_TresActionPerformed
 
     private void VirgulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VirgulaActionPerformed
-        digita(",");
+        digita(".");
     }//GEN-LAST:event_VirgulaActionPerformed
 
     private void CincoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CincoActionPerformed
@@ -300,9 +316,9 @@ public class Visao extends javax.swing.JFrame {
         digita("8");
     }//GEN-LAST:event_OitoActionPerformed
 
-    private void DivisaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DivisaoActionPerformed
-        digita("/");
-    }//GEN-LAST:event_DivisaoActionPerformed
+    private void ClActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClActionPerformed
+        limpaU();
+    }//GEN-LAST:event_ClActionPerformed
 
     private void MultiplicacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MultiplicacaoActionPerformed
         digita("*");
@@ -333,11 +349,19 @@ public class Visao extends javax.swing.JFrame {
         digita("0");
     }//GEN-LAST:event_ZeroActionPerformed
 
+    private void PercentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PercentActionPerformed
+        digita("%");
+    }//GEN-LAST:event_PercentActionPerformed
+
+    private void DivisaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DivisaoActionPerformed
+        digita("/");
+    }//GEN-LAST:event_DivisaoActionPerformed
+
     private void digita(String caractere) {
         if (tfValor.getText().equals("")) {
             tfValor.setText(caractere);
         } else {
-            if (caractere.equals(",") && tfValor.getText().contains(",")) {
+            if (caractere.equals(".") && tfValor.getText().contains(".")) {
                 tfValor.setText(tfValor.getText().concat(caractere));
             } else {
                 tfValor.setText(tfValor.getText().concat(caractere));
@@ -346,42 +370,23 @@ public class Visao extends javax.swing.JFrame {
     }
 
     private void limpa() {
+
         tfValor.setText("");
+
     }
 
-     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code
-        //(optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look
-        and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/
-         plaf.html
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info :
-            javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Visao.class.getName()).log(
-            java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Visao.class.getName()).log(
-            java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Visao.class.getName()).log(
-            java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Visao.class.getName()).log(
-            java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    
+    private void limpaU(){
+        StringBuffer erase = new StringBuffer(tfValor.getText());
+        erase.reverse();
+        erase.deleteCharAt(0);
+        erase.reverse();
+        String x = new String(erase);
+        tfValor.setText(x);
+    }
 
-        /* Create and display the form */
+    public static void main(String args[]) {
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Visao().setVisible(true);
@@ -392,6 +397,7 @@ public class Visao extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ACButton;
     private javax.swing.JButton Cinco;
+    private javax.swing.JButton Cl;
     private javax.swing.JButton Divisao;
     private javax.swing.JButton Dois;
     private javax.swing.JButton Igual;
@@ -409,6 +415,7 @@ public class Visao extends javax.swing.JFrame {
     private javax.swing.JButton Virgula;
     private javax.swing.JButton Zero;
     private javax.swing.JButton adicao;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private java.awt.Panel panel1;
