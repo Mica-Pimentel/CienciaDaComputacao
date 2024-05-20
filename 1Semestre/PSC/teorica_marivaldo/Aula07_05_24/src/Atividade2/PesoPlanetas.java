@@ -177,38 +177,38 @@ public class PesoPlanetas extends javax.swing.JFrame {
 
     private void bMercurioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bMercurioActionPerformed
         float pesoTerra = Float.parseFloat(jPesoTerra.getText());
-        float p = (float) ((pesoTerra / 10) * 0.37);
+        float p = (float) ((pesoTerra / 10) * 3.7);
         jResultado.setText(String.valueOf(p));
 
     }//GEN-LAST:event_bMercurioActionPerformed
 
     private void bVenusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bVenusActionPerformed
         float pesoTerra = Float.parseFloat(jPesoTerra.getText());
-        float p = (float) ((pesoTerra / 10) * 0.88);
+        float p = (float) ((pesoTerra / 10) * 8.8);
         jResultado.setText(String.valueOf(p));
     }//GEN-LAST:event_bVenusActionPerformed
 
     private void bMarteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bMarteActionPerformed
         float pesoTerra = Float.parseFloat(jPesoTerra.getText());
-        float p = (float) ((pesoTerra / 10) * 0.38);
+        float p = (float) ((pesoTerra / 10) * 3.8);
         jResultado.setText(String.valueOf(p));
     }//GEN-LAST:event_bMarteActionPerformed
 
     private void bSaturnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSaturnoActionPerformed
         float pesoTerra = Float.parseFloat(jPesoTerra.getText());
-        float p = (float) ((pesoTerra / 10) * 1.15);
+        float p = (float) ((pesoTerra / 10) * 11.5);
         jResultado.setText(String.valueOf(p));
     }//GEN-LAST:event_bSaturnoActionPerformed
 
     private void bUranoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bUranoActionPerformed
         float pesoTerra = Float.parseFloat(jPesoTerra.getText());
-        float p = (float) ((pesoTerra / 10) * 1.17);
+        float p = (float) ((pesoTerra / 10) * 11.7);
         jResultado.setText(String.valueOf(p));
     }//GEN-LAST:event_bUranoActionPerformed
 
     private void bJupterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bJupterActionPerformed
         float pesoTerra = Float.parseFloat(jPesoTerra.getText());
-        float p = (float) ((pesoTerra / 10) * 2.64);
+        float p = (float) ((pesoTerra / 10) * 26.4);
         jResultado.setText(String.valueOf(p));
     }//GEN-LAST:event_bJupterActionPerformed
 

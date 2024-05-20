@@ -34,14 +34,14 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="66" max="32767" attributes="0"/>
+              <EmptySpace pref="25" max="32767" attributes="0"/>
               <Component id="jLabel1" min="-2" pref="270" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="Tesoura" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTesoura" min="-2" max="-2" attributes="0"/>
                   <Component id="jPapel" min="-2" max="-2" attributes="0"/>
                   <Component id="jPedra" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -63,14 +63,14 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jPapel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="Tesoura" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTesoura" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="resultado" min="-2" pref="134" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="99" max="32767" attributes="0"/>
+              <EmptySpace pref="35" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -109,19 +109,28 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Papel"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jPapelActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JRadioButton" name="Tesoura">
+    <Component class="javax.swing.JRadioButton" name="jTesoura">
       <Properties>
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
           <ComponentRef name="buttonGroup1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Tesoura"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTesouraActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="resultado">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="resultadoActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

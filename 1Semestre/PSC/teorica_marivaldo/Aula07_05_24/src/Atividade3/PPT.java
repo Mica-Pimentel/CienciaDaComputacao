@@ -6,13 +6,17 @@ package Atividade3;
 
 /**
  *
- * @author 722414878
+ * @author micael
  */
-public class PedraPapelTesoura extends javax.swing.JFrame {
+public class PPT extends javax.swing.JFrame {
 
     /**
-     * Creates new form PedraPapelTesoura
+     * Creates new form PPT
      */
+    public PPT() {
+        initComponents();
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -22,10 +26,6 @@ public class PedraPapelTesoura extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
-        buttonGroup2 = new javax.swing.ButtonGroup();
-        buttonGroup3 = new javax.swing.ButtonGroup();
-        buttonGroup4 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jPedra = new javax.swing.JRadioButton();
         jPapel = new javax.swing.JRadioButton();
@@ -38,7 +38,6 @@ public class PedraPapelTesoura extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Pedra, Papel ou Tesoura?");
 
-        buttonGroup1.add(jPedra);
         jPedra.setText("Pedra");
         jPedra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -46,7 +45,6 @@ public class PedraPapelTesoura extends javax.swing.JFrame {
             }
         });
 
-        buttonGroup1.add(jPapel);
         jPapel.setText("Papel");
         jPapel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -54,7 +52,6 @@ public class PedraPapelTesoura extends javax.swing.JFrame {
             }
         });
 
-        buttonGroup1.add(jTesoura);
         jTesoura.setText("Tesoura");
         jTesoura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,7 +71,7 @@ public class PedraPapelTesoura extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(25, Short.MAX_VALUE)
+                .addContainerGap(66, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(64, 64, 64))
             .addGroup(layout.createSequentialGroup()
@@ -103,10 +100,8 @@ public class PedraPapelTesoura extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(resultado, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(99, Short.MAX_VALUE))
         );
-
-        jPedra.getAccessibleContext().setAccessibleDescription("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -123,9 +118,17 @@ public class PedraPapelTesoura extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jPedraActionPerformed
 
-    private void resultadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resultadoActionPerformed
-        resultado.setText("helo Word!");
-    }//GEN-LAST:event_resultadoActionPerformed
+    private void jPapelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPapelActionPerformed
+        switch (randInt()) {
+            case 1 ->
+                resultado.setText("empate");
+            case 2 ->
+                resultado.setText("o jagador perdeu!");
+            default ->
+                resultado.setText("o jogador ganhou");
+
+        }
+    }//GEN-LAST:event_jPapelActionPerformed
 
     private void jTesouraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTesouraActionPerformed
         switch (randInt()) {
@@ -138,17 +141,9 @@ public class PedraPapelTesoura extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jTesouraActionPerformed
 
-    private void jPapelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPapelActionPerformed
-        switch (randInt()) {
-            case 1 ->
-                resultado.setText("empate");
-            case 2 ->
-                resultado.setText("o jagador perdeu!");
-            default ->
-                resultado.setText("o jogador ganhou");
-
-        }
-    }//GEN-LAST:event_jPapelActionPerformed
+    private void resultadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resultadoActionPerformed
+        resultado.setText("helo Word!");
+    }//GEN-LAST:event_resultadoActionPerformed
 
     public static int randInt() {
         java.util.Random rand = new java.util.Random();
@@ -173,31 +168,25 @@ public class PedraPapelTesoura extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PedraPapelTesoura.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PPT.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PedraPapelTesoura.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PPT.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PedraPapelTesoura.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PPT.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PedraPapelTesoura.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PPT.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
-        System.out.println(randInt());
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PedraPapelTesoura().setVisible(true);
+                new PPT().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.ButtonGroup buttonGroup2;
-    private javax.swing.ButtonGroup buttonGroup3;
-    private javax.swing.ButtonGroup buttonGroup4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JRadioButton jPapel;
     private javax.swing.JRadioButton jPedra;
