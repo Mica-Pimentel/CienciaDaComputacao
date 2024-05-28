@@ -1,0 +1,75 @@
+@startuml
+entity "Universidade" as Universidade {
+  +id: int
+  nome: String
+  endereço: String
+  telefone: String
+}
+
+entity "Curso" as Curso {
+  +id: int
+  nome: String
+  código: String
+  cargaHorária: int
+}
+
+entity "Disciplina" as Disciplina {
+  +id: int
+  nome: String
+  código: String
+  cargaHorária: int
+  curso_id: int
+}
+
+entity "Professor" as Professor {
+  +id: int
+  nome: String
+  matrícula: String
+}
+
+entity "Aluno" as Aluno {
+  +id: int
+  nome: String
+  matrícula: String
+  curso_id: int
+}
+
+entity "Matricula" as Matricula {
+  +id: int
+  aluno_id: int
+  disciplina_id: int
+}
+
+entity "Nota" as Nota {
+  +id: int
+  valor: float
+  data: Date
+  aluno_id: int
+  disciplina_id: int
+}
+
+entity "Falta" as Falta {
+  +id: int
+  quantidade: int
+  data: Date
+  aluno_id: int
+  disciplina_id: int
+}
+
+entity "ProfDisciplina" as ProfDisciplina {
+  +id: int
+  professor_id: int
+  disciplina_id: int
+}
+
+Universidade ||--o{ Curso : "oferece"
+Curso ||--o{ Disciplina : "contém"
+Disciplina ||--o{ Matricula : "tem"
+Aluno ||--o{ Matricula : "é inscrito"
+Disciplina ||--o{ Nota : "tem"
+Aluno ||--o{ Nota : "recebe"
+Disciplina ||--o{ Falta : "tem"
+Aluno ||--o{ Falta : "tem"
+Professor ||--o{ ProfDisciplina : "ministra"
+Disciplina ||--o{ ProfDisciplina : "é ministrada por"
+@enduml

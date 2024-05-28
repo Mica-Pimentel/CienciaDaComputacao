@@ -1,0 +1,41 @@
+@startuml
+entity "Universidade" as Universidade {
+  nome: String
+  endereço: String
+  telefone: String
+}
+
+entity "Curso" as Curso {
+  nome: String
+  código: String
+  cargaHorária: int
+}
+
+entity "Disciplina" as Disciplina {
+  nome: String
+  código: String
+  cargaHorária: int
+}
+
+entity "Professor" as Professor {
+  nome: String
+  matrícula: String
+}
+
+entity "Aluno" as Aluno {
+  nome: String
+  matrícula: Stringð
+}
+
+entity "Nota" as Nota {
+  valor: float
+  data: Date
+}
+
+entity "Falta" as Falta {
+  quantidade: int
+  data: Date
+}
+
+Universidade ||--o{ Curso : "oferece"
+Curso ||--o{ Disciplina
