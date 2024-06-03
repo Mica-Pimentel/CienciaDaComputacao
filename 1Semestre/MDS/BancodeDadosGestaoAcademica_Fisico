@@ -1,0 +1,78 @@
+CREATE TABLE curso (
+    nome VARCHAR(255),
+    codigo VARCHAR(50) PRIMARY KEY,
+    carga_horaria INT,
+    disciplinas TEXT
+);
+
+CREATE TABLE disciplina (
+    nome VARCHAR(255),
+    codigo VARCHAR(50) PRIMARY KEY,
+    cargaHoraria INT,
+    id_professor INT,
+    ra_aluno INT
+);
+
+CREATE TABLE aluno (
+    nome VARCHAR(255),
+    ra INT PRIMARY KEY,
+    cpf VARCHAR(20),
+    sexo VARCHAR(10),
+    falta INT
+);
+
+CREATE TABLE boletim (
+    notas FLOAT,
+    raAluno INT,
+    cod_disciplina VARCHAR(50),
+    fk_disciplina_codigo VARCHAR(50),
+    fk_aluno_ra INT,
+    CONSTRAINT FK_boletim_1 FOREIGN KEY (fk_disciplina_codigo) REFERENCES disciplina (codigo) ON DELETE CASCADE,
+    CONSTRAINT FK_boletim_2 FOREIGN KEY (fk_aluno_ra) REFERENCES aluno (ra) ON DELETE CASCADE
+);
+
+CREATE TABLE coordenador (
+    idCoordenador INT,
+    fk_funcionario_matricula VARCHAR(50),
+    PRIMARY KEY (idCoordenador, fk_funcionario_matricula),
+    CONSTRAINT FK_coordenador_2 FOREIGN KEY (fk_funcionario_matricula) REFERENCES funcionario (matricula) ON DELETE CASCADE
+);
+
+CREATE TABLE professor (
+    idProfessor INT,
+    fk_funcionario_matricula VARCHAR(50),
+    PRIMARY KEY (idProfessor, fk_funcionario_matricula),
+    CONSTRAINT FK_professor_2 FOREIGN KEY (fk_funcionario_matricula) REFERENCES funcionario (matricula) ON DELETE CASCADE
+);
+
+CREATE TABLE funcionario (
+    matricula VARCHAR(50) PRIMARY KEY,
+    nome VARCHAR(255),
+    formacao VARCHAR(255),
+    salario FLOAT,
+    data_de_admissao DATE,
+    profissao VARCHAR(255),
+    cpf VARCHAR(20)
+);
+
+CREATE TABLE oferece (
+    fk_curso_codigo VARCHAR(50),
+    fk_disciplina_codigo VARCHAR(50),
+    CONSTRAINT FK_oferece_1 FOREIGN KEY (fk_curso_codigo) REFERENCES curso (codigo) ON DELETE RESTRICT,
+    CONSTRAINT FK_oferece_2 FOREIGN KEY (fk_disciplina_codigo) REFERENCES disciplina (codigo) ON DELETE SET NULL
+);
+
+CREATE TABLE estuda (
+    fk_aluno_ra INT,
+    fk_disciplina_codigo VARCHAR(50),
+    CONSTRAINT FK_estuda_1 FOREIGN KEY (fk_aluno_ra) REFERENCES aluno (ra) ON DELETE RESTRICT,
+    CONSTRAINT FK_estuda_2 FOREIGN KEY (fk_disciplina_codigo) REFERENCES disciplina (codigo) ON DELETE RESTRICT
+);
+
+CREATE TABLE ministra (
+    fk_professor_idProfessor INT,
+    fk_professor_fk_funcionario_matricula VARCHAR(50),
+    fk_disciplina_codigo VARCHAR(50),
+    CONSTRAINT FK_ministra_1 FOREIGN KEY (fk_professor_idProfessor, fk_professor_fk_funcionario_matricula) REFERENCES professor (idProfessor, fk_funcionario_matricula) ON DELETE RESTRICT,
+    CONSTRAINT FK_ministra_2 FOREIGN KEY (fk_disciplina_codigo) REFERENCES disciplina (codigo) ON DELETE SET NULL
+);
