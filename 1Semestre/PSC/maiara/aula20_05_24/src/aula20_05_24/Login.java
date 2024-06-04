@@ -48,22 +48,28 @@ public class Login extends javax.swing.JFrame {
         jUser = new javax.swing.JTextField();
         bLogin = new javax.swing.JButton();
         bExit = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setIconImages(null);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Password");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, 70, 30));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 70, 30));
 
+        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("User");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, 50, 30));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, 50, 30));
 
         jPassword.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        getContentPane().add(jPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 160, 160, 30));
+        getContentPane().add(jPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 160, 160, 30));
 
         jUser.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        getContentPane().add(jUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 90, 160, 30));
+        getContentPane().add(jUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, 160, 30));
 
         bLogin.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         bLogin.setText("login");
@@ -72,7 +78,7 @@ public class Login extends javax.swing.JFrame {
                 bLoginActionPerformed(evt);
             }
         });
-        getContentPane().add(bLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 230, -1, -1));
+        getContentPane().add(bLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, -1, -1));
 
         bExit.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         bExit.setText("Exit");
@@ -82,13 +88,16 @@ public class Login extends javax.swing.JFrame {
                 bExitActionPerformed(evt);
             }
         });
-        getContentPane().add(bExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 230, -1, -1));
+        getContentPane().add(bExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 230, -1, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aula20_05_24/fundo01.jpg"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 370));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void bLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLoginActionPerformed
-        verificaSenha(jPassword.getText());
+        verificarSenha(jPassword.getText());
 
     }//GEN-LAST:event_bLoginActionPerformed
 
@@ -104,7 +113,7 @@ public class Login extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "For?a boa");
         } else if (length > 8 && hasLetras && hasNumeros && hasCaracteres) {
             if (length >= 12) {
-                JOptionPane.showMessageDialog(null, "Fo?a forte");
+                JOptionPane.showMessageDialog(null, "For?a forte");
             }
         } else {
             JOptionPane.showMessageDialog(null, "For?a fraca");
@@ -153,6 +162,7 @@ public class Login extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bExit;
     private javax.swing.JButton bLogin;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField jPassword;
