@@ -4,6 +4,7 @@
  */
 package Interface;
 
+import java.util.HashSet;
 import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
 
@@ -11,16 +12,26 @@ import javax.swing.JOptionPane;
  *
  * @author micael
  */
-public class CadastrarProduto1 extends javax.swing.JInternalFrame {
+public class EditarProduto extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form CadastrarProduto
      */
     private JDesktopPane principal0;
+    public int idAEditar;
 
-    public CadastrarProduto1(JDesktopPane jdp) {
+    public EditarProduto(JDesktopPane jdp, int id, String nome, String marca, double custo, double venda, int quantidade) {
         initComponents();
         principal0 = jdp;
+        this.idAEditar = id;
+        //Exibindo os dados que vao ser editados
+        jTID.setText(Integer.toString(idAEditar));
+        jTNOME.setText(nome);
+        jTMARCA.setText(marca);
+        jTCUSTO.setText(Double.toString(custo));
+        jTVENDA.setText(Double.toString(venda));
+        jTQUANTIDADE.setText(Integer.toString(quantidade));
+
     }
 
     /**
@@ -44,7 +55,7 @@ public class CadastrarProduto1 extends javax.swing.JInternalFrame {
         jTMARCA = new javax.swing.JTextField();
         jTID = new javax.swing.JTextField();
         jTCUSTO = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        jBEditar = new javax.swing.JButton();
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -78,10 +89,10 @@ public class CadastrarProduto1 extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton1.setText("Cadastrar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jBEditar.setText("Editar");
+        jBEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jBEditarActionPerformed(evt);
             }
         });
 
@@ -125,8 +136,8 @@ public class CadastrarProduto1 extends javax.swing.JInternalFrame {
                                     .addComponent(jTVENDA, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jTQUANTIDADE, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(30, 30, 30)
-                                        .addComponent(jButton1))))
+                                        .addGap(79, 79, 79)
+                                        .addComponent(jBEditar))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(22, 22, 22)
                                 .addComponent(jTNOME, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)))))
@@ -162,7 +173,7 @@ public class CadastrarProduto1 extends javax.swing.JInternalFrame {
                         .addGap(6, 6, 6)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTQUANTIDADE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1))))
+                            .addComponent(jBEditar))))
                 .addGap(56, 56, 56))
         );
 
@@ -173,20 +184,18 @@ public class CadastrarProduto1 extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTCUSTOActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jBEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEditarActionPerformed
+
         String nome = jTNOME.getText();
         String marca = jTMARCA.getText();
 
         double custo = Double.parseDouble(jTCUSTO.getText());
         double venda = Double.parseDouble(jTVENDA.getText());
         int quantidade = Integer.parseInt(jTQUANTIDADE.getText());
-        crud_a3_psc.Sistema.cadastrarProdutos(nome, marca, custo, venda, quantidade);
-        jTNOME.setText("");
-        jTMARCA.setText("");
-        jTCUSTO.setText("");
-        jTVENDA.setText("");
-        jTQUANTIDADE.setText("");
-    }//GEN-LAST:event_jButton1ActionPerformed
+        crud_a3_psc.Sistema.updateProduto(idAEditar, nome, marca, custo, venda, quantidade);
+
+
+    }//GEN-LAST:event_jBEditarActionPerformed
 
     /* public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -238,7 +247,7 @@ public class CadastrarProduto1 extends javax.swing.JInternalFrame {
     }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jBEditar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -77,6 +77,11 @@ public class Pesquisar extends javax.swing.JInternalFrame {
         });
 
         jBEditar.setText("Editar");
+        jBEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBEditarActionPerformed(evt);
+            }
+        });
 
         jtProduto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -164,9 +169,9 @@ public class Pesquisar extends javax.swing.JInternalFrame {
                 // DefaultTableModel model = (DefaultTableModel) jtProduto.getModel();
                 // model.removeRow( jtProduto.getSelectedRow());
                 int linha = this.jtProduto.getSelectedRow();
-                System.out.println(linha);
+                //System.out.println(linha);
                 int idD = Integer.parseInt(jtProduto.getValueAt(linha, 0).toString());
-                System.out.println(idD);
+                //System.out.println(idD);
                 crud_a3_psc.Sistema.excluirProduto(idD);
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, ex.getMessage());
@@ -178,6 +183,30 @@ public class Pesquisar extends javax.swing.JInternalFrame {
 
 
     }//GEN-LAST:event_jBExcluirActionPerformed
+
+    private void jBEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEditarActionPerformed
+        if (jtProduto.getSelectedRow() != -1) {
+            // DefaultTableModel model = (DefaultTableModel) jtProduto.getModel();
+            // model.removeRow( jtProduto.getSelectedRow());
+            int linha = this.jtProduto.getSelectedRow();
+            //System.out.println(linha);
+            int idD = Integer.parseInt(jtProduto.getValueAt(linha, 0).toString());
+            String nome = (jtProduto.getValueAt(linha, 1).toString());
+            String marca = (jtProduto.getValueAt(linha, 2).toString());
+            double custo = Double.parseDouble(jtProduto.getValueAt(linha, 3).toString());
+            double venda = Double.parseDouble(jtProduto.getValueAt(linha, 4).toString());
+            int quantidade = Integer.parseInt(jtProduto.getValueAt(linha, 5).toString());
+            //System.out.println(idD);
+            EditarProduto editarproduto = new EditarProduto(principal0, idD, nome, marca, custo, venda, quantidade);
+            principal0.add(editarproduto);
+            editarproduto.setVisible(true);
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione algum produto!");
+        }
+
+
+    }//GEN-LAST:event_jBEditarActionPerformed
 
     /**
      * @param args the command line arguments public static void main(String

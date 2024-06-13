@@ -53,8 +53,7 @@ public class Sistema {
 
     public static void pesquisarProdutos(String nome, DefaultTableModel model) throws SQLException {
         String query = "SELECT * FROM produtos WHERE nome LIKE ?";
-        try (Connection conexao = Conexao.getConnection();
-             PreparedStatement declaracao = conexao.prepareStatement(query)) {
+        try (Connection conexao = Conexao.getConnection(); PreparedStatement declaracao = conexao.prepareStatement(query)) {
 
             declaracao.setString(1, "%" + nome + "%");
             ResultSet retorno = declaracao.executeQuery();
@@ -80,13 +79,27 @@ public class Sistema {
             JOptionPane.showMessageDialog(null, "Erro ao pesquisar produtos: " + e.getMessage());
         }
     }
-    
-    public static void excluirProduto(int id)throws SQLException{
+
+    public static void excluirProduto(int id) throws SQLException {
         try {
             execute("DELETE FROM produtos WHERE  id_prod=" + id);
             JOptionPane.showMessageDialog(null, "Produto(s) excluidos");
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Produto(s) excluidos"+ e.getMessage());
+            JOptionPane.showMessageDialog(null, "Produto(s) excluidos" + e.getMessage());
         }
+    }
+
+    public static void updateProduto(int id, String nome, String marca, double custo, double venda, int quantidade) {
+        try {
+            execute("update produtos SET nome = \"" + nome + "\", marca= \"" + marca + "\", custo = " + custo + ", venda=" + venda
+                    + ",quantidade = " + quantidade + " WHERE id_prod = " + id);
+            //execute("update produtos set nome = '" + nome + "', marca = '" + marca + "' ,custo = " + custo
+            //                 + ",venda= " + venda + ",quantidade = " + quantidade + "WHERE  id_prod = " + id);
+            JOptionPane.showMessageDialog(null, "Produto atualizado com sucesso!");
+
+        } catch (SQLException x) {
+            JOptionPane.showMessageDialog(null, "Produto nao atualizado!");
+        }
+
     }
 }
