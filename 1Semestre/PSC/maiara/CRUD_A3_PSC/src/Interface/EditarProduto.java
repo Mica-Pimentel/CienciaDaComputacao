@@ -18,7 +18,7 @@ public class EditarProduto extends javax.swing.JInternalFrame {
      * Creates new form CadastrarProduto
      */
     private JDesktopPane principal0;
-    public int idAEditar;
+    private int idAEditar;
 
     public EditarProduto(JDesktopPane jdp, int id, String nome, String marca, double custo, double venda, int quantidade) {
         initComponents();

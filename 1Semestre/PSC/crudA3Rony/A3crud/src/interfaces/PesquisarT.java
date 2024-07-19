@@ -1,29 +1,19 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-package Interface;
+package interfaces;
 
-import crud_a3_psc.Produtos;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author micael
- */
-public class Pesquisar extends javax.swing.JInternalFrame {
+public class PesquisarT extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form Pesquisar
      */
     private JDesktopPane principal0;
 
-    public Pesquisar(JDesktopPane jdp) {
+    public PesquisarT(JDesktopPane jdp) {
         initComponents();
         principal0 = jdp;
     }
@@ -37,7 +27,7 @@ public class Pesquisar extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        NomePesquisar = new javax.swing.JTextField();
+        nomePesquisar = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jBPESQUISAR = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
@@ -50,7 +40,11 @@ public class Pesquisar extends javax.swing.JInternalFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconifiable(true);
         setMaximizable(true);
-        setResizable(true);
+        try {
+            setSelected(true);
+        } catch (java.beans.PropertyVetoException e1) {
+            e1.printStackTrace();
+        }
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setText("Nome");
@@ -109,7 +103,7 @@ public class Pesquisar extends javax.swing.JInternalFrame {
                 .addGap(51, 51, 51)
                 .addComponent(jLabel1)
                 .addGap(12, 12, 12)
-                .addComponent(NomePesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(nomePesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(51, 51, 51)
                 .addComponent(jBPESQUISAR)
@@ -129,14 +123,14 @@ public class Pesquisar extends javax.swing.JInternalFrame {
                 .addGap(6, 6, 6)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addComponent(NomePesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nomePesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jBPESQUISAR)
                     .addComponent(jBExcluir)
                     .addComponent(jButton1)
                     .addComponent(jBEditar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -145,39 +139,29 @@ public class Pesquisar extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        CadastrarProduto1 cadastrarproduto = new CadastrarProduto1(principal0);
-        principal0.add(cadastrarproduto);
-        cadastrarproduto.setVisible(true);
+        CadastrarEditar cadastrarEditar = new CadastrarEditar(principal0);
+        principal0.add(cadastrarEditar);
+        cadastrarEditar.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jBPESQUISARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBPESQUISARActionPerformed
-
-        String nome = NomePesquisar.getText();
+        String nome = nomePesquisar.getText();
         DefaultTableModel model = (DefaultTableModel) jtProduto.getModel();
         try {
-            crud_a3_psc.Sistema.pesquisarProdutos(nome, model);
+            a3crud.Conexao.pesquisarBd(nome, model);
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Erro ao pesquisar Produtos: " + e.getMessage());
         }
+
+
     }//GEN-LAST:event_jBPESQUISARActionPerformed
 
     private void jBExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBExcluirActionPerformed
-        //realiza uma remo?ao da tabela
-        // jtProduto.getSelectedRow();
 
         if (jtProduto.getSelectedRow() != -1) {
-            try {
-                // DefaultTableModel model = (DefaultTableModel) jtProduto.getModel();
-                // model.removeRow( jtProduto.getSelectedRow());
-                int linha = this.jtProduto.getSelectedRow();
-                //System.out.println(linha);
-                int idD = Integer.parseInt(jtProduto.getValueAt(linha, 0).toString());
-                //System.out.println(idD);
-                crud_a3_psc.Sistema.excluirProduto(idD);
-            } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, ex.getMessage());
-            }
-
+            int linha = this.jtProduto.getSelectedRow();
+            int idD = Integer.parseInt(jtProduto.getValueAt(linha, 0).toString());
+            a3crud.Conexao.deletarBd(idD);
         } else {
             JOptionPane.showMessageDialog(null, "Produto(s) n?o selecionado(s)");
         }
@@ -187,18 +171,14 @@ public class Pesquisar extends javax.swing.JInternalFrame {
 
     private void jBEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEditarActionPerformed
         if (jtProduto.getSelectedRow() != -1) {
-            // DefaultTableModel model = (DefaultTableModel) jtProduto.getModel();
-            // model.removeRow( jtProduto.getSelectedRow());
-            int linha = this.jtProduto.getSelectedRow();
-            //System.out.println(linha);
+            int linha = jtProduto.getSelectedRow();
             int idD = Integer.parseInt(jtProduto.getValueAt(linha, 0).toString());
-            String nome = (jtProduto.getValueAt(linha, 1).toString());
-            String marca = (jtProduto.getValueAt(linha, 2).toString());
+            String nome = jtProduto.getValueAt(linha, 1).toString();
+            String marca = jtProduto.getValueAt(linha, 2).toString();
             double custo = Double.parseDouble(jtProduto.getValueAt(linha, 3).toString());
             double venda = Double.parseDouble(jtProduto.getValueAt(linha, 4).toString());
             int quantidade = Integer.parseInt(jtProduto.getValueAt(linha, 5).toString());
-            //System.out.println(idD);
-            EditarProduto editarproduto = new EditarProduto(principal0, idD, nome, marca, custo, venda, quantidade);
+            EditarT editarproduto = new EditarT(principal0, idD, nome, marca, custo, venda, quantidade);
             principal0.add(editarproduto);
             editarproduto.setVisible(true);
 
@@ -244,7 +224,6 @@ public class Pesquisar extends javax.swing.JInternalFrame {
    * }
      */
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField NomePesquisar;
     private javax.swing.JButton jBEditar;
     private javax.swing.JButton jBExcluir;
     private javax.swing.JButton jBPESQUISAR;
@@ -252,5 +231,6 @@ public class Pesquisar extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jtProduto;
+    private javax.swing.JTextField nomePesquisar;
     // End of variables declaration//GEN-END:variables
 }

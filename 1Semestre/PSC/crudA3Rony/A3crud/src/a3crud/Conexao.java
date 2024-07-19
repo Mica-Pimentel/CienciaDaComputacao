@@ -1,61 +1,57 @@
-package crud_a3_psc;
+package a3crud;
 
-import com.mysql.cj.jdbc.ConnectionImpl;
-import java.awt.HeadlessException;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.PreparedStatement;
 import javax.swing.JOptionPane;
+import java.sql.ResultSet;
 import javax.swing.table.DefaultTableModel;
 
-public class Sistema {
+public class Conexao {
+
+    private static String url = "jdbc:mysql://localhost:3306/crudea3";
+    private static String user = "root";
+    private static String key = "";
+
+    public static Connection getConnection() throws SQLException {
+        return DriverManager.getConnection(url, user, key);
+    }
 
     public static void execute(String comando) throws SQLException {
-        Connection conexao = Conexao.getConnection();
         try {
-            PreparedStatement declaracao = conexao.prepareStatement(comando);
+            PreparedStatement declaracao = getConnection().prepareStatement(comando);
             declaracao.executeUpdate();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e);
-        } finally {
-            if (conexao != null) {
-                conexao.close();
-            }
         }
+
     }
 
-    public static ResultSet executeQuery(String comando) throws SQLException {
-        Connection conexao = Conexao.getConnection();
+    public static ResultSet query(String comando) throws SQLException {
         try {
-            PreparedStatement declaracao = conexao.prepareStatement(comando);
+            PreparedStatement declaracao = getConnection().prepareStatement(comando);
             return declaracao.executeQuery();
-
         } catch (SQLException e) {
             JOptionPane.showInternalInputDialog(null, e);
         }
         return null;
-
     }
 
-    public static void cadastrarProdutos(String nome, String marca, double custo, double venda, int quantidade) {
+    public static void cadastarBD(String nome, String marca, double custo, double venda, int quantidade) throws SQLException {
         try {
-            execute("INSERT INTO produtos  (nome, marca, custo, venda, quantidade) values("
-                    + "'" + nome + "'" + "," + "'" + marca + "'" + "," + custo + "," + venda + "," + quantidade + ") "
-            );
+            execute("insert into produtos(nome, marca, custo, venda, quantidade) values('" + nome + "', '" + marca + "', '" + custo + "', '" + venda + "', '" + quantidade + "') ");
             JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso!");
-
         } catch (SQLException x) {
-            JOptionPane.showMessageDialog(null, "Produto nao cadastrado!");
+            JOptionPane.showMessageDialog(null, "Produto nao cadastradao!");
         }
-
     }
 
-    public static void pesquisarProdutos(String nome, DefaultTableModel model) throws SQLException {
+    public static void pesquisarBd(String nome, DefaultTableModel model) throws SQLException {
         String query = "SELECT * FROM produtos WHERE nome LIKE ?";
-        try (Connection conexao = Conexao.getConnection(); PreparedStatement declaracao = conexao.prepareStatement(query)) {
-
+        try (PreparedStatement declaracao = getConnection().prepareStatement(query)) {
             declaracao.setString(1, "%" + nome + "%");
+
             ResultSet retorno = declaracao.executeQuery();
             model.setNumRows(0);
             while (retorno.next()) {
@@ -74,9 +70,17 @@ public class Sistema {
             } else {
                 JOptionPane.showMessageDialog(null, "Produtos n?o encontrados!");
             }
-
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Erro ao pesquisar produtos: " + e.getMessage());
+        }
+    }
+
+    public static void deletarBd(int id) {
+        try {
+            execute("DELETE FROM produtos WHERE  id_prod=" + id);
+            JOptionPane.showMessageDialog(null, "Produto(s) excluidos");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Produto(s) excluidos" + e.getMessage());
         }
     }
 
@@ -85,7 +89,7 @@ public class Sistema {
             execute("DELETE FROM produtos WHERE  id_prod=" + id);
             JOptionPane.showMessageDialog(null, "Produto(s) excluidos");
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Produto(s) n?o excluidos" + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Produto(s) excluidos" + e.getMessage());
         }
     }
 
@@ -93,13 +97,13 @@ public class Sistema {
         try {
             execute("update produtos SET nome = \"" + nome + "\", marca= \"" + marca + "\", custo = " + custo + ", venda=" + venda
                     + ",quantidade = " + quantidade + " WHERE id_prod = " + id);
-            //execute("update produtos set nome = '" + nome + "', marca = '" + marca + "' ,custo = " + custo
-            //                 + ",venda= " + venda + ",quantidade = " + quantidade + "WHERE  id_prod = " + id);
+
             JOptionPane.showMessageDialog(null, "Produto atualizado com sucesso!");
 
         } catch (SQLException x) {
-            JOptionPane.showMessageDialog(null, "Produto n?o atualizado!");
+            JOptionPane.showMessageDialog(null, "Produto nao atualizado!");
         }
 
     }
+
 }
