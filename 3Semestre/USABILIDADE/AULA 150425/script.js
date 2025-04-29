@@ -57,7 +57,7 @@ function salvarTarefas() {
     const feita = li.classList.contains("seguinte");
     itens.push({ texto, feita });
   });
-  setCookie("tarefas", JSON.stringify(itens), 7);
+  setCookie("tarefas", JSON.stringify(itens), 30);
 }
 
 function carregarTarefas() {
