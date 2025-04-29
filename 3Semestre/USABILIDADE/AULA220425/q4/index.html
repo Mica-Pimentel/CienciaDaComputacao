@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>clculadora</title>
+    <style>
+      * {
+        margin: 0;
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 1.4rem;
+        align-items: center;
+        text-align: center;
+      }
+
+      header {
+        padding: 1rem;
+        box-shadow: 0px 1px 4px black;
+      }
+      #conteudo {
+        margin-top: 1rem;
+      }
+      .bt {
+        background-color: rgba(0, 128, 128, 0.089);
+        display: inline;
+        padding: 0.5rem;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Tabuada dos numeros</h1>
+    </header>
+    <div id="conteudo">
+      <input type="number" name="" id="entrada" />
+      <div class="bt" onclick="calcular()">Calcular</div>
+    </div>
+    <div id="resultados"></div>
+  </body>
+  <script>
+    /*
+    Questão 4 – Tabuada do Número Crie uma função que receba 
+    um número digitado pelo usuário e gere sua tabuada de 
+    multiplicação de 1 a 10. Exiba os resultados formatados 
+    verticalmente, como em uma tabela.
+    */
+    function calcular() {
+      let operador = document.querySelector("#entrada").value;
+      console.log(operador);
+      let resultados = document.querySelector("#resultados");
+
+      resultados.innerHTML = "";
+      for (let i = 1; i <= 10; i++) {
+        let resultado = operador * i;
+        resultados.innerHTML += `<p>${operador} X ${i} = ${resultado}`;
+      }
+    }
+  </script>
+</html>

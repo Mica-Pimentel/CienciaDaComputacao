@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IMMPAR PARt</title>
+    <style>
+      div {
+        display: flex;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <p>Digite o numero a ser verificado!:</p>
+      <input type="text" id="entrada" />
+      <button type="button" onclick="verificar()">Verificar</button>
+    </div>
+    <div id="resultado"></div>
+  </body>
+  <script>
+    //Questão 1 – Verificação: Par ou Ímpar? Crie uma função que leia um número
+    //digitado pelo usuário, verifique se ele é par ou ímpar, e exiba o resultado na
+    //tela. Utilize uma estrutura condicional para essa verificação.
+    function verificar() {
+      let num = document.getElementById("entrada");
+      let numVerificar = Number(num.value);
+      const divResuldado = document.getElementById("resultado");
+      if (numVerificar % 2 == 0) {
+        divResuldado.innerHTML = `<p>${numVerificar} é par</p>`;
+      } else {
+        divResuldado.innerHTML = `<p>${numVerificar} é impar</p>`;
+      }
+      num.value = " ";
+    }
+  </script>
+</html>
+
